@@ -46,10 +46,12 @@ function ToggleMenu(catererId, imgId, menuId) {
     if (class_hidden == "hidden") {
         image.src = "icons/minus.png";
         menu.classList.remove("hidden");
+        caterer.classList.add("caterer_selected")
     }
     else if(class_hidden == undefined){
         image.src = "icons/plus.png"
         menu.classList.add("hidden");
+        caterer.classList.remove("caterer_selected")
     }
 
 }
