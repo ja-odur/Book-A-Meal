@@ -12,14 +12,17 @@
     <div>
         <span>w</span>elcome <span>username</span> to <span>e</span>asy<span>m</span>eal!
     </div>
+
 </div>
 <div id="content">
     <div id="sidebar">
         <ul>
-            <li><a href="#" class="selected">Menu</a></li>
-            <li><a href="#">Change Order</a></li>
-            <li><a href="#">Order History</a></li>
-            <li><a href="#">Notification</a></li>
+            <li><a href="#" class="selected" id="display_menu" onclick="ToggleSidebar('menu', 'display_menu', 'display_changeOrder', 'display_history', 'display_notif')">Menu</a></li>
+            <li><a href="#" id="display_changeOrder" onclick="ToggleSidebar('current_order', 'display_changeOrder', 'display_menu', 'display_history', 'display_notif')">Change Order</a></li>
+            <li><a href="#" id="display_history" onclick="ToggleSidebar('order_history', 'display_history', 'display_menu', 'display_changeOrder', 'display_notif')">Order History</a></li>
+            <li><a href="#" id="display_notif" onclick="ToggleSidebar('notification', 'display_notif', 'display_menu', 'display_history', 'display_changeOrder')">Notifications</a></li>
+            <li class="splitter"></li>
+            <li><a href="#" id="logout">LogOut</a></li>
         </ul>
 
     </div>
@@ -110,6 +113,45 @@
                 <p>Beef with rice 1000</p>
                 <p>Beef with rice 1000</p>
             </div>
+        </div>
+
+        <div class="hidden" id="current_order">
+            <table class="table table_current_order">
+                <tr><th colspan="3">CURRENT ORDERS</th></tr>
+                <tr><td>Beef with rice 1000</td><td>Caterer 1</td><td><input type="button" value="Change"></td></tr>
+                <tr><td>Beef with rice 1000</td><td>Caterer 1</td><td><input type="button" value="Change"></td></tr>
+                <tr><td>Beef with rice 1000</td><td>Caterer 1</td><td><input type="button" value="Change"></td></tr>
+                <tr><td>Beef with rice 1000</td><td>Caterer 1</td><td><input type="button" value="Change"></td></tr>
+                <tr><td>Beef with rice 1000</td><td>Caterer 1</td><td><input type="button" value="Change"></td></tr>
+            </table>
+
+        </div>
+
+        <div class="hidden" id="order_history">
+            <table class="table table_current_order">
+                <tr><th colspan="3">ORDER HISTORY</th></tr>
+                <tr><td>Beef with rice </td><td>Caterer 1</td><td><input type="button" value="Easy Point"></td></tr>
+                <tr><td>Beef with rice </td><td>Caterer 1</td><td><input type="button" value="Easy Point"></td></tr>
+                <tr><td>Beef with rice </td><td>Caterer 1</td><td><input type="button" value="Easy Point"></td></tr>
+                <tr><td>Beef with rice </td><td>Caterer 1</td><td><input type="button" value="Easy Point"></td></tr>
+                <tr><td>Beef with rice </td><td>Caterer 1</td><td><input type="button" value="Easy Point"></td></tr>
+
+            </table>
+
+        </div>
+
+        <div class="hidden" id="notification">
+            <table class="table table_current_order">
+                <tr><th colspan="3">NOTIFICATIONS</th></tr>
+                <tr><td colspan="3">Caterer 1 created a menu</td></tr>
+                <tr><td colspan="3">Caterer 1 created a menu</td></tr>
+                <tr><td colspan="3">Caterer 1 created a menu</td></tr>
+                <tr><td colspan="3">Caterer 1 created a menu</td></tr>
+                <tr><td colspan="3">Caterer 1 created a menu</td></tr>
+
+
+            </table>
+
         </div>
 
     </div>

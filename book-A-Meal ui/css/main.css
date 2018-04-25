@@ -211,7 +211,7 @@ body {
     padding: 5px;
     float: left;
     clear: left;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 
 }
 
@@ -244,19 +244,34 @@ body {
 #sidebar ul li a:hover {
     color: blue;
     background-color: white;
-    border-right: none;
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
+    /*border-right: none;*/
+    /*border-bottom-right-radius: 0px;*/
+    /*border-top-right-radius: 0px;*/
 }
 
+#logout {
+    background-color: red !important;
+    border-color: red !important;
+}
 
+#logout:hover {
+    background-color: white !important;
+    color: red !important;
+}
+
+.splitter {
+    border: 2px solid blue;
+    margin:13px 0px;
+
+}
 /*============================================ middle content =====================================*/
 .selected {
     color: blue !important;
     background-color: white !important;
+    /*border-right: none !important;*/
 }
 .middle_content {
-    border: 1px solid red;
+    border: 1px solid white;
     text-align: center;
     margin: 5px 26% 5px 11.5%;
     padding-top: 15px;
@@ -265,7 +280,7 @@ body {
 }
 
 #menu {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     padding: 5px;
 }
 
@@ -344,4 +359,40 @@ table#table01 {
 .table tr:hover {
     background-color: rgba(0, 0, 255, 0.9);
     color: white;
+}
+
+.table.table_current_order {
+    margin: 5px auto;
+    width: 75%;
+    background-color: #bfbfbf;
+    /*background-color: rgba(0, 0, 255, 0.6);*/
+    /*color:white;*/
+}
+
+.table_current_order th {
+    /*border: 1px solid blue;*/
+    background-color: blue;
+    font-size: 1.3em;
+    color: white;
+    border-collapse: collapse;
+    border-bottom: 1px solid white;
+    padding: 3px 10px;
+    /*width:100%;*/
+    text-align: center;
+
+}
+
+
+.table_current_order tr:nth-child(2n+2) {
+    background-color: white;
+    color: black;
+}
+
+.table_current_order tr:hover {
+    background-color: rgba(0, 0, 255, 0.9);
+    color: white;
+}
+
+#notification table tr td {
+    font-size: 1.15em;
 }
