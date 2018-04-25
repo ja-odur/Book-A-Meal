@@ -17,8 +17,8 @@
 <div id="content">
     <div id="sidebar">
         <ul>
-            <li><a href="#" class="selected" id="display_menu" onclick="ToggleSidebar('menu', 'display_menu', 'display_changeOrder', 'display_history', 'display_notif')">Edit Menu</a></li>
-            <li><a href="#" id="display_changeOrder" onclick="ToggleSidebar('current_order', 'display_changeOrder', 'display_menu', 'display_history', 'display_notif')">Add Meal</a></li>
+            <li><a href="#" class="selected" id="edit_menu" onclick="ToggleSidebar('menu', 'edit_menu', ['meal'])">Edit Menu</a></li>
+            <li><a href="#" id="meal" onclick="ToggleSidebar('add_meal', 'meal', ['edit_menu'])">Add Meal</a></li>
             <li class="splitter"></li>
             <li><a href="#" id="logout">LogOut</a></li>
         </ul>
@@ -65,45 +65,36 @@
             <div><img src="icons/plus.png" class="menu_img"></div>
 
         </div>
+        <div class="hidden"id="add_meal">
+            <p class="caterer" >ADD MEAL</p>
+            <form id="signin_form">
 
-        <div class="hidden" id="current_order">
-            <table class="table table_current_order">
-                <tr><th colspan="3">CURRENT ORDERS</th></tr>
-                <tr><td>Beef with rice 1000</td><td>Caterer 1</td><td><input type="button" value="Change"></td></tr>
-                <tr><td>Beef with rice 1000</td><td>Caterer 1</td><td><input type="button" value="Change"></td></tr>
-                <tr><td>Beef with rice 1000</td><td>Caterer 1</td><td><input type="button" value="Change"></td></tr>
-                <tr><td>Beef with rice 1000</td><td>Caterer 1</td><td><input type="button" value="Change"></td></tr>
-                <tr><td>Beef with rice 1000</td><td>Caterer 1</td><td><input type="button" value="Change"></td></tr>
-            </table>
+                <p>
+                <div class="row">
+                    <label for="meal_name">Meal name:</label>
+                    <input type="text" id="meal_name" name="meal_name"></br></br>
+                </div>
 
+                <div class="row">
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" name="price"></br>
+                </div>
+
+                <div class="row">
+                    <label class="hidden" for="submit"></label></br>
+                    <input type="submit" id="submit" value="Add meal"></br>
+                </div>
+
+                </p>
+            </form>
+            <!--<div><img src="icons/plus.png" class="menu_img"></div>-->
         </div>
 
-        <div class="hidden" id="order_history">
-            <table class="table table_current_order">
-                <tr><th colspan="3">ORDER HISTORY</th></tr>
-                <tr><td>Beef with rice </td><td>Caterer 1</td><td><input type="button" value="Easy Point"></td></tr>
-                <tr><td>Beef with rice </td><td>Caterer 1</td><td><input type="button" value="Easy Point"></td></tr>
-                <tr><td>Beef with rice </td><td>Caterer 1</td><td><input type="button" value="Easy Point"></td></tr>
-                <tr><td>Beef with rice </td><td>Caterer 1</td><td><input type="button" value="Easy Point"></td></tr>
-                <tr><td>Beef with rice </td><td>Caterer 1</td><td><input type="button" value="Easy Point"></td></tr>
-
-            </table>
-
-        </div>
-
-        <div class="hidden" id="notification">
-            <table class="table table_current_order">
-                <tr><th colspan="3">NOTIFICATIONS</th></tr>
-                <tr><td colspan="3">Caterer 1 created a menu</td></tr>
-                <tr><td colspan="3">Caterer 1 created a menu</td></tr>
-                <tr><td colspan="3">Caterer 1 created a menu</td></tr>
-                <tr><td colspan="3">Caterer 1 created a menu</td></tr>
-                <tr><td colspan="3">Caterer 1 created a menu</td></tr>
+    </div>
 
 
-            </table>
 
-        </div>
+
 
     </div>
 
