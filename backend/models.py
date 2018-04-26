@@ -34,11 +34,12 @@ class DbCaterers(DbUsers):
     def __init__(self):
         super().__init__()
 
-    def add_user(self, email, username, password, address, category='caterer'):
+    def add_user(self, email, username, password, address, category='caterer', brand_name=''):
         try:
             self.all_users[username]
         except KeyError:
-            self.all_users[username] = [email, username, password, address, category]
-            return '{} created.'.format(username)
+            brand_name_final = brand_name if brand_name else username
+            self.all_users[username] = [email, username, password, address, category, brand_name_final]
+            return True
 
-        return 'Username already exits, please choose another'
+        return False
