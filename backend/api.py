@@ -11,7 +11,10 @@ app.register_blueprint(user_page)
 from api_v1.meals import meals
 app.register_blueprint(meals)
 
-# ==================== supportive functions===============================
+from api_v1.menu import menu
+app.register_blueprint(menu)
+
+
 
 
 if __name__ == '__main__':

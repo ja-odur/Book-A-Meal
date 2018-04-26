@@ -1,4 +1,6 @@
 
+# =====================================DbUsers==============================================
+
 class DbUsers:
     def __init__(self):
         self.all_users = dict()
@@ -57,6 +59,7 @@ class DbCaterers(DbUsers):
 
         return False
 
+# =======================================DbMeals=================================================
 
 class DbMeals:
     def __init__(self):
@@ -135,4 +138,7 @@ class DbMeals:
         return False
 
 
+# ============================================DbMenu===============================================
 
+class DbMenu:
+    pass
