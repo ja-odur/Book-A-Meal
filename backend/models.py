@@ -84,6 +84,29 @@ class DbMeals:
         # for any reason meal not added
         return False
 
+    def get_meal(self, caterer, meal_id):
+        try:
+            all_meals_caterer = self.get_all_meals(caterer)
+            meal = all_meals_caterer[meal_id - 1]
+        except (KeyError, IndexError):
+            pass
+        else:
+            return meal
+        return False
+
+    def update_meal(self, caterer, meal_id, update_field, value):
+        meal = self.get_meal(caterer, meal_id)
+        if meal:
+            if update_field == 'name':
+                meal[1] = value
+            elif update_field == 'price':
+                meal[2] = value
+            self.get_all_meals(caterer)[meal_id-1] = meal
+            return meal
+        return False
+
     def get_all_meals(self, caterer):
-        return self.meals[caterer]
+        if self.meals[caterer]:
+            return self.meals[caterer]
+        return False
 
