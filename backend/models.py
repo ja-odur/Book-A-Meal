@@ -68,7 +68,7 @@ class DbMeals:
             self.meals[caterer]
         except KeyError:
             meals = list()
-            meal_id = 0
+            meal_id = 1
             meal = [meal_id, meal_name, price]
             meals.append(meal)
 
@@ -83,4 +83,7 @@ class DbMeals:
 
         # for any reason meal not added
         return False
+
+    def get_all_meals(self, caterer):
+        return self.meals[caterer]
 

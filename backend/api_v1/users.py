@@ -1,5 +1,5 @@
 from flask import jsonify, request, make_response, Blueprint
-from ..models import DbUsers, DbCaterers
+from models import DbUsers, DbCaterers
 
 user_db = DbUsers()
 caterer_db = DbCaterers()
