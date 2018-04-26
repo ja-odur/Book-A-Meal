@@ -16,8 +16,26 @@ def create_meal():
     else:
         return make_response(jsonify(dict(message='meal not added.')), 401)
 
+
 @meals.route('/meals/', methods=["GET"])
 def get_all_meals():
     meals_per_caterer = meals_db.get_all_meals(caterer='default')
+    if meals_per_caterer:
+        return make_response(jsonify(message=meals_per_caterer), 201)
+    return make_response(jsonify(message='Resource not found'), 404)
 
-    return make_response(jsonify(message=meals_per_caterer), 201)
+
+@meals.route('/meals/<int:meal_id>', methods=['PUT'])
+def update_meal(meal_id):
+    data = request.get_json()
+    update, message = False, ''
+    try:
+        if data['name']:
+            updated = meals_db.update_meal(caterer='default', meal_id=meal_id, update_field='name', value=data['name'])
+    except KeyError:
+        if data['price']:
+            updated = meals_db.update_meal(caterer='default', meal_id=meal_id, update_field='price', value=data['price'])
+
+    if updated:
+        return make_response(jsonify(message=updated), 201)
+    return make_response(jsonify(message='failed'), 201)
