@@ -80,6 +80,7 @@ class DbMeals:
             all_meals = self.meals[caterer]
             meal_id = all_meals[-1][0] + 1
             all_meals.append([meal_id, meal_name, price])
+            return True
 
         # for any reason meal not added
         return False
@@ -106,8 +107,11 @@ class DbMeals:
         return False
 
     def get_all_meals(self, caterer):
-        if self.meals[caterer]:
-            return self.meals[caterer]
+        try:
+            if self.meals[caterer]:
+                return self.meals[caterer]
+        except KeyError:
+            pass
         return False
 
     def delete_meal(self, caterer, meal_id):
@@ -118,20 +122,15 @@ class DbMeals:
             counter, list_length = 0, len(all_meals)
             while counter < list_length:
                 meal = all_meals[counter]
-                if meal[0] == (meal_id-1):
-                    # del meal
+
+                if meal[0] == meal_id:
                     deleted = True
                     break
 
                 counter += 1
             if deleted:
-                del self.get_all_meals(caterer)[counter]
-
-        else:
-            return False
-
-        if deleted:
-            return True
+                del self.meals[caterer][counter]
+                return True
 
         return False
 
