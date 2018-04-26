@@ -14,11 +14,14 @@ class TestAPIs(unittest.TestCase):
     def test_successful_registration(self):
         input_data = dict(category='user', email='default@gmail.com', username='default', password='12345',
                           confirm_password='12345', address='address1')
-        expected_reponse_message = '{} successfully signed up.'.format(input_data['username'])
+        expected_response_message = '{} successfully signed up.'.format(input_data['username'])
         get_response = self.tester.post('/auth/signup', content_type="application/json", data=json.dumps(input_data))
 
+        response_results = json.loads(get_response.data.decode())
+        # print(response_results)
+
         self.assertEqual(get_response.status_code, 201)
-        self.assertEqual(get_response.data['message'], expected_reponse_message)
+        self.assertEqual(expected_response_message, response_results['message'])
 
 
 if __name__ == '__main__':

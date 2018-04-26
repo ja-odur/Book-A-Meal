@@ -8,9 +8,11 @@ class DbUsers:
             self.all_users[username]
         except KeyError:
             self.all_users[username] = [email, username, password, address]
-            return '{} successfully signed up.'.format(username)
+            return True
+            # return '{} successfully signed up.'.format(username)
 
-        return 'Username already exits, please choose another'
+        return False
+        # return 'Username already exits, please choose another'
 
     def get_user_info(self, username):
         try:
