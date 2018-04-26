@@ -24,5 +24,24 @@ function set_footer(){
     footer.style.display = "block";
 }
 
+function toggleBrandName(){
+    var customer = document.getElementById("customer");
+    var caterer = document.getElementById("caterer");
+    var brand_label = document.getElementById("brand_label");
+
+    if(customer.checked){
+        if(brand_label.classList.contains("hidden")){}
+        else{
+            brand_label.classList.remove("hidden");
+        }
+    }
+    else if(caterer.click()){
+        if(brand_label.classList.contains("hidden")){
+            brand_label.classList.remove("hidden");
+        }
+    }
+}
+
 
 document.addEventListener("DOMContentLoaded", set_footer);
+toggleBrandName();

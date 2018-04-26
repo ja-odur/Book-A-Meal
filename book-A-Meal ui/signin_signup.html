@@ -21,6 +21,14 @@
             Invalid Username or password
         </div>
         <form id="signin_form">
+            <div class="row" style="margin-top: 5px;">
+                <label for="signin_customer">CUSTOMER:
+                    <input type="radio" id="signin_customer" name="signin_type" checked required>
+                </label>
+                <label for="signin_caterer" style="text-align: center">CATERER:
+                    <input type="radio" id="signin_caterer" name="signin_type">
+                </label></br>
+            </div>
 
             <p>
                 <div class="row">
@@ -56,11 +64,13 @@
         </div>
 
         <form id="signup_form">
-            <div style="border: 1px solid red">
-                <label for="customer">Customer:</label>
+            <div class="row" style="border: 1px solid red">
+                <label for="customer">CUSTOMER:
                 <input type="radio" id="customer" name="customer" checked required>
-                <label for="category">Caterer:</label>
-                <input type="radio" id="category" name="customer"></br></br>
+                </label>
+                <label for="caterer" style="text-align: center">CATERER:
+                <input type="radio" id="caterer" name="customer">
+                </label></br>
             </div>
             <p>
 
@@ -72,6 +82,11 @@
             <div class="row">
                 <label for="user">Username:</label>
                 <input type="text" id="user" name="password"></br></br>
+            </div>
+
+            <div class="row hidden" id="brand_label">
+                <label for="brand">Brand Name:</label>
+                <input type="text" id="brand" name="brand"></br></br>
             </div>
 
             <div class="row">
