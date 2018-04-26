@@ -1,7 +1,7 @@
 import unittest
 import json
 
-from .apis_book_a_meal import app
+from backend.apis_book_a_meal import app
 
 
 class TestAPIs(unittest.TestCase):
@@ -48,6 +48,18 @@ class TestAPIs(unittest.TestCase):
         response_results = json.loads(get_response3.data.decode())
         print(get_response3.status_code)
         self.assertEqual(get_response3.status_code, 401)
+        self.assertEqual(expected_response_message, response_results['error'])
+
+    def test_login_user(self):
+        reg_data = dict(category='user', email='default@gmail.com', username='default', password='12345',
+                        confirm_password='12345', address='address1')
+        login_data = dict(category='user', username='default', password='12345')
+        expected_response_message = '{} successfully signed in.'.format(reg_data['username'])
+        get_response = self.tester.post('/auth/login', content_type="application/json", data=json.dumps(login_data))
+
+        response_results = json.loads(get_response.data.decode())
+        print(get_response.status_code)
+        self.assertEqual(get_response.status_code, 401)
         self.assertEqual(expected_response_message, response_results['message'])
 
 

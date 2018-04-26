@@ -14,11 +14,11 @@ class DbUsers:
         return False
         # return 'Username already exits, please choose another'
 
-    def get_user_info(self, username):
+    def get_user(self, username):
         try:
             return self.all_users[username]
         except KeyError:
-            return "User not found."
+            return False
 
     def get_all_users(self):
         return self.all_users
