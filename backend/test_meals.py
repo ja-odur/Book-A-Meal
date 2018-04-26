@@ -41,6 +41,7 @@ class TestMeals(unittest.TestCase):
         self.tester.post('api/v1/meals/', content_type="application/json", data=json.dumps(input_data))
         get_response = self.tester.put('api/v1/meals/2', content_type="application/json", data=json.dumps(update_data))
 
+
         response_results = json.loads(get_response.data.decode())
         # print(response_results)
 
@@ -50,16 +51,17 @@ class TestMeals(unittest.TestCase):
     def test_delete_meal(self):
         input_data = dict(username='default', name='meal', price=5000)
         # update_data = dict(price=6000)
-        expected_response_message = [1, 'meal', 6000]
+        expected_response_message = [1, 'meal', 5000]
         self.tester.post('api/v1/meals/', content_type="application/json", data=json.dumps(input_data))
         self.tester.post('api/v1/meals/', content_type="application/json", data=json.dumps(input_data))
-        get_response = self.tester.delete('api/v1/meals/2')
+        get_response1 = self.tester.delete('api/v1/meals/7')
+        get_response = self.tester.get('api/v1/meals/')
 
-        # response_results = json.loads(get_response.data.decode())
+        response_results = json.loads(get_response.data.decode())
         # print(response_results)
 
         self.assertEqual(get_response.status_code, 201)
-        # self.assertEqual(expected_response_message, response_results['message'])
+        self.assertEqual(expected_response_message, response_results['message'])
 
 
 if __name__ == '__main__':

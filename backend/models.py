@@ -110,3 +110,30 @@ class DbMeals:
             return self.meals[caterer]
         return False
 
+    def delete_meal(self, caterer, meal_id):
+        deleted = False
+        all_meals = self.get_all_meals(caterer)
+
+        if all_meals:
+            counter, list_length = 0, len(all_meals)
+            while counter < list_length:
+                meal = all_meals[counter]
+                if meal[0] == (meal_id-1):
+                    # del meal
+                    deleted = True
+                    break
+
+                counter += 1
+            if deleted:
+                del self.get_all_meals(caterer)[counter]
+
+        else:
+            return False
+
+        if deleted:
+            return True
+
+        return False
+
+
+
