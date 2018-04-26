@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, request, make_response
+
 from .models import DbUsers, DbCaterers
 
 app = Flask(__name__)
+
 user_db = DbUsers()
 caterer_db = DbCaterers()
 
@@ -31,12 +33,11 @@ def register_user():
 def login():
     data = request.get_json()
     if data['category'] == 'user':
-        username = data['username']
-        user_info = DbUsers.get_user(username)
+        user_info = user_db.get_user(data['username'])
         if user_info:
             user_password = user_info['password']
             if user_password == data['password']:
-                return make_response(jsonify({'message':'user successfully logged in in'}), 401)
+                return make_response(jsonify({'message':'user successfully logged in in'}), 201)
 
 if __name__ == '__main__':
     app.run(debug=True)
