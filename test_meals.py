@@ -1,13 +1,15 @@
 import unittest
 import json
 
-from .api import app
+from .run import app
 
 
 class TestMeals(unittest.TestCase):
     def setUp(self):
         self.tester = app.test_client(self)
         # self.get_response = None
+
+
 
     def test_create_meals(self):
         input_data = dict(username='default1', name='meal', price=5000)

@@ -1,12 +1,16 @@
 import unittest
 import json
 
-from .api import app
+from .run import app
+from .views_v1.meals import meals_db
 
 class TestMenu(unittest.TestCase):
     def setUp(self):
         self.tester = app.test_client(self)
         # self.get_response = None
+
+    def tearDown(self):
+        pass
 
     def test_create_menu(self):
         menu = [[1, 'rice and posho', 5000], [1, 'rice and posho', 5000], [1, 'rice and posho', 5000]]

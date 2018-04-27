@@ -1,7 +1,7 @@
 import unittest
 import json
 
-from api import app
+from run import app
 
 
 class TestSuccesfulRegistration(unittest.TestCase):
