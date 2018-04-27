@@ -78,4 +78,9 @@ class DbMeals:
 
         else:
             all_meals = self.meals[caterer]
+            meal_id = all_meals[-1][0] + 1
+            all_meals.append([meal_id, meal_name, price])
+
+        # for any reason meal not added
+        return False
 
