@@ -1,7 +1,7 @@
 import unittest
 import json
 
-from backend.api import app
+from .api import app
 
 
 class TestMeals(unittest.TestCase):
