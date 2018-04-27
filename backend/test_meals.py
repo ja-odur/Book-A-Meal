@@ -22,7 +22,7 @@ class TestMeals(unittest.TestCase):
 
     def test_get_all_meals(self):
         input_data = dict(username='default', name='meal', price=5000)
-        expected_response_message = [[1, 'meal', 5000], [2, 'meal', 5000]]
+        expected_response_message = [[1, 'meal', 5000], [2, 'meal', 5000], [3, 'meal', 5000]]
         self.tester.post('api/v1/meals/', content_type="application/json", data=json.dumps(input_data))
         self.tester.post('api/v1/meals/', content_type="application/json", data=json.dumps(input_data))
         get_response = self.tester.get('api/v1/meals/')
