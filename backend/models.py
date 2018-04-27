@@ -56,3 +56,25 @@ class DbCaterers(DbUsers):
                 return True
 
         return False
+
+
+class DbMeals:
+    def __init__(self):
+        self.meals = dict()
+        # self.id
+
+    def add_meal(self, caterer, meal_name, price):
+        try:
+            self.meals[caterer]
+        except KeyError:
+            meals = list()
+            meal_id = 0
+            meal = [meal_id, meal_name, price]
+            meals.append(meal)
+
+            self.meals[caterer] = meals
+            # self.id += 1
+            return True
+
+        else:
+            all_meals = self.meals[caterer]
