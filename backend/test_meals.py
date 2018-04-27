@@ -9,7 +9,6 @@ class TestMeals(unittest.TestCase):
         self.tester = app.test_client(self)
         # self.get_response = None
 
-
     def test_create_meals(self):
         input_data = dict(name='meal', price=5000)
         expected_response_message = 'Meal {} successfully added.'.format(input_data['name'])
