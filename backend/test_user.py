@@ -14,7 +14,7 @@ class TestSuccesfulRegistration(unittest.TestCase):
         input_data = dict(category='user', email='default@gmail.com', username='default', password='12345',
                           confirm_password='12345', address='address1')
         expected_response_message = 'User {} successfully signed up.'.format(input_data['username'])
-        get_response = self.tester.post('/auth/signup', content_type="application/json", data=json.dumps(input_data))
+        get_response = self.tester.post('api/v1/auth/signup', content_type="application/json", data=json.dumps(input_data))
 
         response_results = json.loads(get_response.data.decode())
         # print(response_results)
@@ -26,7 +26,7 @@ class TestSuccesfulRegistration(unittest.TestCase):
         input_data = dict(category='caterer', email='default@gmail.com', username='default', password='12345',
                           confirm_password='12345', address='address1', brand_name='easy_caterer')
         expected_response_message = 'Caterer {} successfully signed up.'.format(input_data['username'])
-        get_response = self.tester.post('/auth/signup', content_type="application/json", data=json.dumps(input_data))
+        get_response = self.tester.post('api/v1/auth/signup', content_type="application/json", data=json.dumps(input_data))
 
         response_results = json.loads(get_response.data.decode())
 
@@ -38,11 +38,11 @@ class TestSuccesfulRegistration(unittest.TestCase):
                           confirm_password='12345', address='address1')
 
         # initialsignup
-        get_response1 = self.tester.post('/auth/signup', content_type="application/json", data=json.dumps(input_data))
+        get_response1 = self.tester.post('api/v1/auth/signup', content_type="application/json", data=json.dumps(input_data))
         expected_response_message = 'User {} already exists.'.format(input_data['username'])
 
         #second signup
-        get_response3 = self.tester.post('/auth/signup', content_type="application/json", data=json.dumps(input_data))
+        get_response3 = self.tester.post('api/v1/auth/signup', content_type="application/json", data=json.dumps(input_data))
 
         response_results = json.loads(get_response3.data.decode())
         print(response_results)
@@ -56,9 +56,9 @@ class TestSuccesfulRegistration(unittest.TestCase):
         login_data = dict(category='user', username='default', password='12345')
 
         expected_response_message = 'user successfully logged in'
-        register_user = self.tester.post('/auth/signup', content_type="application/json", data=json.dumps(reg_data))
+        register_user = self.tester.post('api/v1/auth/signup', content_type="application/json", data=json.dumps(reg_data))
 
-        get_response = self.tester.post('/auth/login', content_type="application/json", data=json.dumps(login_data))
+        get_response = self.tester.post('api/v1/auth/login', content_type="application/json", data=json.dumps(login_data))
 
         response_results = json.loads(get_response.data.decode())
         print(get_response.status_code)

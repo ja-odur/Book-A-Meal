@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, make_response
 import sys
 sys.path.append('backend')
 
-# from models import DbUsers, DbCaterers
+
 
 
 app = Flask(__name__)
