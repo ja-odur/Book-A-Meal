@@ -1,8 +1,8 @@
 import unittest
 import json
 
-from .run import app
-from .views_v1.meals import meals_db
+from run import app
+from views_v1.meals import meals_db
 
 class TestMenu(unittest.TestCase):
     def setUp(self):
