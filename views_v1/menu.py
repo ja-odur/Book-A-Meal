@@ -13,6 +13,13 @@ def create_menu():
     created_menu = menu_db.create_menu(caterer='default', daily_menu=data['menu'])
 
     if created_menu:
-        return make_response(jsonify(message=data['menu']), 201)
+        message = 'Menu {} successfully added.'.format(data['menu'])
+        return make_response(jsonify(message=message), 201)
     return make_response(jsonify(message='Bad data format'), 403)
+
+@menu.route('/menu/', methods=['GET'])
+def get_menu():
+    menu = menu_db.get_menu()
+    message = 'Todays menu {}.'.format(menu)
+    return make_response(jsonify(message=message), 200)
 

@@ -150,3 +150,6 @@ class DbMenu:
             return True
         return False
 
+    def get_menu(self):
+        return self.menu
+
