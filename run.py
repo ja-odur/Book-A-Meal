@@ -14,6 +14,8 @@ app.register_blueprint(meals)
 from views_v1.menu import menu
 app.register_blueprint(menu)
 
+from views_v1.orders import orders
+app.register_blueprint(orders)
 
 
 

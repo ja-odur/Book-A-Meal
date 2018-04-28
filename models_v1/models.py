@@ -153,3 +153,8 @@ class DbMenu:
     def get_menu(self):
         return self.menu
 
+
+# ===========================================DbOrders===============================
+
+class DbOrders:
+    pass
