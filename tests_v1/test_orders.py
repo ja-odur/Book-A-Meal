@@ -9,9 +9,9 @@ class TestMenu(unittest.TestCase):
         # self.get_response = None
 
     def test_create_order(self):
-        order = dict(default=dict(meal=[1, 'rice and posho', 5000], caterer='default', orderId=1))
+        order = dict(meal=[1, 'rice and posho', 5000], caterer='default')
 
-        expected_response_message = 'Menu {} successfully added.'.format(order)
+        expected_response_message = 'Order {} successfully placed.'.format(order)
         get_response = self.tester.post('api/v1/orders', content_type="application/json", data=json.dumps(order))
 
         response_results = json.loads(get_response.data.decode())
@@ -21,7 +21,7 @@ class TestMenu(unittest.TestCase):
         self.assertEqual(expected_response_message, response_results['message'])
 
     def test_modify_order(self):
-        order = dict(default=dict(meal=[1, 'rice and posho', 5000], caterer='default', orderId=1))
+        order = dict(meal=[1, 'rice and posho', 5000], caterer='default')
         modified_order = dict(default=dict(meal=[1, 'rice and posho_modified', 5000], caterer='default', orderId=1))
         expected_response_message = 'Menu {} successfully added.'.format(order)
         self.tester.post('api/v1/orders', content_type="application/json", data=json.dumps(order))
