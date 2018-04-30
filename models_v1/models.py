@@ -1,4 +1,4 @@
-
+import datetime
 # =====================================DbUsers==============================================
 
 class DbUsers:
@@ -157,4 +157,85 @@ class DbMenu:
 # ===========================================DbOrders===============================
 
 class DbOrders:
-    pass
+    def __init__(self):
+        self.orders_customers = dict()
+        self.orders_caterers = dict()
+        self.order_expiry_time = datetime.timedelta(hours=1).total_seconds()
+        self.id_count = 1
+
+    def add_order(self, customer, caterer, meal):
+        order_time = datetime.datetime.now()
+        order_customer_format = dict(order_id=self.id_count, meal=meal, caterer=caterer, cleared=False, order_time=order_time)
+        order_caterer_format = dict(order_id=self.id_count, meal=meal, customer=customer, cleared=False, order_time=order_time)
+        self.id_count += 1
+        set_customer_order = False
+        set_caterer_order = False
+
+        try:
+            self.orders_customers[customer]
+        except KeyError:
+            self.orders_customers[customer] = [order_customer_format]
+            set_customer_order = True
+        else:
+            self.orders_customers[customer].append(order_customer_format)
+            set_customer_order = True
+
+        try:
+            self.orders_caterers[caterer]
+        except KeyError:
+            self.orders_caterers[caterer] = [order_caterer_format]
+            set_caterer_order = True
+        else:
+            self.orders_caterers[caterer].append(order_caterer_format)
+            set_caterer_order = True
+
+        if(set_customer_order and set_caterer_order):
+            return True
+        return False
+
+    def modify_order(self, customer, caterer, order_id, meal):
+        time_now = datetime.datetime.now()
+        try:
+            orders = self.orders_customers[customer]
+        except KeyError:
+            pass
+        else:
+            counter_customer = 0
+            counter_caterer = 0
+
+            while counter_customer < len(orders):
+                if orders[counter_customer]['order_id'] == order_id:
+                    break
+                counter_customer += 1
+
+            # while counter_caterer < len(orders_caterer):
+            #     if orders_caterer[counter_caterer]['order_id'] == order_id and \
+            #                       orders_caterer[counter_caterer]['meal'] == meal:
+            #         break
+            #     counter_caterer += 1
+
+            order_time = self.orders_customers[customer][counter_customer]['order_time']
+            elapse_time = time_now - order_time
+            if elapse_time.total_seconds() <= self.order_expiry_time:
+                self.orders_customers[customer][counter_customer]['meal'] = meal
+                self.orders_caterers[caterer][counter_caterer]['meal'] = meal
+
+                return True
+            else:
+                return 'not found'
+            # return False
+
+        return False
+
+
+    def get_orders(self, caterer):
+        try:
+            return self.orders_caterers[caterer]
+        except KeyError:
+            return False
+
+
+
+
+
+
