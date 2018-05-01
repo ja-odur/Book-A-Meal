@@ -1,4 +1,4 @@
-Endpoint to signup users, both customers and caterers
+Endpoint to signin users, both customers and caterers
 ---
 
 parameters:
@@ -9,18 +9,12 @@ parameters:
       type: object
       required:
         - "category"
-        - "email"
         - "username"
         - "password"
-        - "confirm_password"
-        - "address"
       properties:
         category:
           type: "string"
           example: "user or caterer"
-        email:
-          type: "string"
-          example: "johndoe@emaple.com"
         username:
           type: "string"
           example: "johndoe"
@@ -28,13 +22,6 @@ parameters:
           type: "string"
           format: password
           example: 12345
-        confirm_password:
-          type: "string"
-          format: password
-          example: 12345
-        address:
-          type: "string"
-          example: "address1"
 
 responses:
   201:
@@ -42,4 +29,4 @@ responses:
     schema:
       type: object
     examples:
-      { "message": "User johndoe successfully signed up." }
+      { "message": "user successfully logged in." }

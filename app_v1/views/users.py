@@ -39,6 +39,7 @@ def register_user():
 
 
 @users.route('/auth/login', methods=['POST'])
+@swag_from('api_doc/user_login.yml')
 def login():
     data = request.get_json()
     if data['category'] == 'user':
