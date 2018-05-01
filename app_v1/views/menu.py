@@ -20,6 +20,7 @@ def create_menu():
 
 
 @menu.route('/menu/', methods=['GET'])
+@swag_from('api_doc/get_menu.yml')
 def get_menu():
     menu = menu_db.get_menu()
     message = 'Todays menu {}.'.format(menu)
