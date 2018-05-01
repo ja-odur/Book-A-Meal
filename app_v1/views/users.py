@@ -1,4 +1,5 @@
 from flask import jsonify, request, make_response, Blueprint
+from flasgger import swag_from
 
 from app_v1.models.models import DbUsers, DbCaterers
 
@@ -9,6 +10,7 @@ users = Blueprint('users', __name__, url_prefix='/api/v1')
 
 
 @users.route('/auth/signup', methods=['POST'])
+@swag_from('api_doc/user_registration.yml')
 def register_user():
     data = request.get_json()
     if data['password'] == data['confirm_password']:
