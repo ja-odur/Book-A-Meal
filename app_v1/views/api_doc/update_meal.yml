@@ -23,8 +23,14 @@ parameters:
 
 responses:
   201:
-    description: A message indicating the user signup success.
+    description: A message showing the updated item.
     schema:
       type: object
     examples:
-      { "message": "Meal meat and rice successfully added." }
+      {
+        "message": [
+        1,
+        "meat and rice",
+        6000
+        ]
+        }
