@@ -1,20 +1,19 @@
-from flask import Flask, jsonify, request, make_response
-
+from flask import Flask
 
 app = Flask(__name__, instance_relative_config=True)
 
 
-from views_v1.users import user_page
+from app_v1.views.users import users
 
-app.register_blueprint(user_page)
+app.register_blueprint(users)
 
-from views_v1.meals import meals
+from app_v1.views.meals import meals
 app.register_blueprint(meals)
 
-from views_v1.menu import menu
+from app_v1.views.menu import menu
 app.register_blueprint(menu)
 
-from views_v1.orders import orders
+from app_v1.views.orders import orders
 app.register_blueprint(orders)
 
 

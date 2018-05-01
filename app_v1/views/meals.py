@@ -1,6 +1,6 @@
 from flask import jsonify, request, make_response, Blueprint
 
-from models_v1.models import DbMeals
+from app_v1.models.models import DbMeals
 
 meals_db = DbMeals()
 

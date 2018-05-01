@@ -1,6 +1,6 @@
 from flask import jsonify, request, make_response, Blueprint
 
-from models_v1.models import DbMenu
+from app_v1.models.models import DbMenu
 
 menu_db = DbMenu()
 

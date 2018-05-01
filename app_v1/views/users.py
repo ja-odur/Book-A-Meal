@@ -1,14 +1,14 @@
 from flask import jsonify, request, make_response, Blueprint
 
-from models_v1.models import DbUsers, DbCaterers
+from app_v1.models.models import DbUsers, DbCaterers
 
 user_db = DbUsers()
 caterer_db = DbCaterers()
 
-user_page = Blueprint('user_page', __name__, url_prefix='/api/v1')
+users = Blueprint('users', __name__, url_prefix='/api/v1')
 
 
-@user_page.route('/auth/signup',  methods=['POST'])
+@users.route('/auth/signup', methods=['POST'])
 def register_user():
     data = request.get_json()
     if data['password'] == data['confirm_password']:
@@ -36,7 +36,7 @@ def register_user():
                 return make_response(jsonify(dict(message=message)), 403)
 
 
-@user_page.route('/auth/login',  methods=['POST'])
+@users.route('/auth/login', methods=['POST'])
 def login():
     data = request.get_json()
     if data['category'] == 'user':

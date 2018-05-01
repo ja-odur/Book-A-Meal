@@ -1,7 +1,7 @@
 
 from flask import jsonify, request, make_response, Blueprint
 
-from models_v1.models import DbOrders
+from app_v1.models.models import DbOrders
 
 orders_db = DbOrders()
 
@@ -56,3 +56,12 @@ def get_all_orders():
         return make_response(jsonify(message=message, content=orders_per_caterer), 200)
     return make_response(jsonify(message='Oops, orders not found.'), 200)
 
+
+@orders.route('/orders/clear/<int:order_id>', methods=['PUT'])
+def clear_orders(order_id):
+    pass
+
+
+@orders.route('/orders/history', methods=['GET'])
+def get_history():
+    pass
