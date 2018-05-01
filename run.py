@@ -7,7 +7,7 @@ from app_v1.views.orders import orders
 
 app = Flask(__name__, instance_relative_config=True)
 
-SWAGGER = Swagger(app)
+swagger = Swagger(app)
 
 app.register_blueprint(users)
 
