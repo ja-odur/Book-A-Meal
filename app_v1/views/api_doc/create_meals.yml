@@ -1,0 +1,31 @@
+Endpoint that enable caterers to create a new meal
+---
+
+parameters:
+  - name: body
+    in: body
+    required: true
+    schema:
+      type: object
+      required:
+        - "username"
+        - "name"
+        - "price"
+      properties:
+        username:
+          type: "string"
+          example: "johndoe"
+        name:
+          type: "string"
+          example: "meat and rice"
+        price:
+          type: "int"
+          example: 5000
+
+responses:
+  201:
+    description: A message indicating the user signup success.
+    schema:
+      type: object
+    examples:
+      { "message": "Meal meat and rice successfully added." }

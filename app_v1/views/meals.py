@@ -1,4 +1,5 @@
 from flask import jsonify, request, make_response, Blueprint
+from flasgger import swag_from
 
 from app_v1.models.models import DbMeals
 
@@ -8,6 +9,7 @@ meals = Blueprint('meals', __name__, url_prefix='/api/v1')
 
 
 @meals.route('/meals/', methods=['POST'])
+@swag_from('api_doc/create_meals.yml')
 def create_meal():
     data = request.get_json()
 
