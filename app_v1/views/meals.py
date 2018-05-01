@@ -45,10 +45,12 @@ def update_meal(meal_id):
         return make_response(jsonify(message=updated), 201)
     return make_response(jsonify(message='failed'), 201)
 
+
 @meals.route('/meals/<int:meal_id>', methods=['DELETE'])
+@swag_from('api_doc/delete_meal.yml')
 def delete_meal(meal_id):
     meal_deleted = meals_db.delete_meal(caterer='default', meal_id=meal_id)
 
     if meal_deleted:
         return make_response(jsonify(message='meal deleted'), 201)
-    return make_response(jsonify(message='deletion failed'), 201)
+    return make_response(jsonify(message='deletion failed'), 404)
