@@ -30,6 +30,7 @@ def get_all_meals():
 
 
 @meals.route('/meals/<int:meal_id>', methods=['PUT'])
+@swag_from('api_doc/update_meal.yml')
 def update_meal(meal_id):
     data = request.get_json()
     update, message = False, ''

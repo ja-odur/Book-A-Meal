@@ -14,7 +14,7 @@ parameters:
       properties:
         username:
           type: "string"
-          example: "johndoe"
+          example: "default"
         name:
           type: "string"
           example: "meat and rice"
@@ -24,7 +24,7 @@ parameters:
 
 responses:
   201:
-    description: A message indicating the user signup success.
+    description: A message indicating that the meal is successfully added.
     schema:
       type: object
     examples:

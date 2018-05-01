@@ -3,7 +3,7 @@ Endpoint that enable a caterer to get all the available meals inorder to create 
 
 responses:
   201:
-    description: A message indicating the user signup success.
+    description: Returns an object containing all meals from a particular caterer.
     schema:
       type: object
     examples:
@@ -25,5 +25,12 @@ responses:
       5000
     ],
 
-  ]
-}
+      ]
+    }
+
+  404:
+    description: No resource found.
+    schema:
+      type: object
+    examples:
+      { "message": "Resource not found" }
