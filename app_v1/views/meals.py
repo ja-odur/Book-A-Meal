@@ -21,6 +21,7 @@ def create_meal():
 
 
 @meals.route('/meals/', methods=["GET"])
+@swag_from('api_doc/get_all_meals.yml')
 def get_all_meals():
     meals_per_caterer = meals_db.get_all_meals(caterer='default')
     if meals_per_caterer:

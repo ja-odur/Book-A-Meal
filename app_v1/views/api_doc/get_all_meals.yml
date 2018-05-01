@@ -1,0 +1,29 @@
+Endpoint that enable a caterer to get all the available meals inorder to create menu
+---
+
+responses:
+  201:
+    description: A message indicating the user signup success.
+    schema:
+      type: object
+    examples:
+      {
+  "message": [
+    [
+      1,
+      "rice and meat",
+      5000
+    ],
+    [
+      2,
+      "rice and meat",
+      5000
+    ],
+    [
+      3,
+      "rice and meat",
+      5000
+    ],
+
+  ]
+}
