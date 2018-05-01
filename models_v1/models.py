@@ -221,7 +221,7 @@ class DbOrders:
             while counter_caterer < len(orders_caterers):
                 # print('inloop_caterer')
                 if orders_caterers[counter_caterer]['order_id'] == order_id and \
-                                  orders_caterers[counter_caterer]['customer'] == customer:
+                        orders_caterers[counter_caterer]['customer'] == customer:
                     matched_caterer_found = True
                     # print('found_caterer')
                     break

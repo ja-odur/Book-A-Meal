@@ -1,3 +1,4 @@
+
 from flask import jsonify, request, make_response, Blueprint
 
 from models_v1.models import DbOrders
@@ -11,11 +12,12 @@ def create_order():
     data = request.get_json()
     try:
         if data['caterer'] and data['meal']:
-            new_order = orders_db.add_order('default', data['caterer'], data['meal'])
+            new_order = orders_db.add_order(customer='default', caterer=data['caterer'], meal=data['meal'])
 
             if new_order:
                 message = 'Order {} successfully placed.'.format(data)
                 return make_response(jsonify(message=message), 201)
+
     except KeyError:
         pass
     return make_response(jsonify(message='Invalid request format'), 403)
@@ -25,12 +27,22 @@ def create_order():
 def modify_order(meal_id):
     data = request.get_json()
     try:
+        print('caterer', data['caterer'])
+        print('meal', data['meal'])
+        print('order list', orders_db.orders_caterers)
         if data['caterer'] and data['meal']:
-            new_order = orders_db.modify_order(customer='default', caterer=data['caterer'], order_id=meal_id, meal=data['meal'])
 
+            new_order = orders_db.modify_order(customer='default', caterer=data['caterer'], order_id=meal_id,
+                                               meal=data['meal'])
+            print('if start')
+            print('new order', new_order)
             if new_order:
-                message = 'Order {} successfully placed.'.format(data)
+                print('inside if')
+                message = 'Order {} successfully modified.'.format(data)
                 return make_response(jsonify(message=message), 201)
+            else:
+                return make_response(jsonify(message="Resource not found"), 201)
+
     except KeyError:
         pass
     return make_response(jsonify(message='Invalid request format'), 403)
@@ -38,7 +50,7 @@ def modify_order(meal_id):
 
 @orders.route('/orders', methods=['GET'])
 def get_all_orders():
-    orders_per_caterer = orders_db.get_orders(caterer='default4')
+    orders_per_caterer = orders_db.get_orders(caterer='default10')
     if orders_per_caterer:
         message = 'The request was successfull'
         return make_response(jsonify(message=message, content=orders_per_caterer), 200)
