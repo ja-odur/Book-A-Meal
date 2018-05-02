@@ -26,6 +26,7 @@ def create_order():
 
 
 @orders.route('/orders/<int:meal_id>', methods=['PUT'])
+@swag_from('api_doc/modify_order.yml')
 def modify_order(meal_id):
     data = request.get_json()
     try:
