@@ -52,6 +52,7 @@ def modify_order(meal_id):
 
 
 @orders.route('/orders', methods=['GET'])
+@swag_from("api_doc/get_all_orders.yml")
 def get_all_orders():
     orders_per_caterer = orders_db.get_orders(caterer='default10')
     if orders_per_caterer:
