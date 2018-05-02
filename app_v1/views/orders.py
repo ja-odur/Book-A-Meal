@@ -1,13 +1,15 @@
 
 from flask import jsonify, request, make_response, Blueprint
-
+from flasgger import swag_from
 from app_v1.models.models import DbOrders
 
 orders_db = DbOrders()
 
 orders = Blueprint('orders', __name__, url_prefix='/api/v1')
 
+
 @orders.route('/orders', methods=['POST'])
+@swag_from('api_doc/create_order.yml')
 def create_order():
     data = request.get_json()
     try:
