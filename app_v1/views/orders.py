@@ -1,13 +1,15 @@
 
 from flask import jsonify, request, make_response, Blueprint
-
+from flasgger import swag_from
 from app_v1.models.models import DbOrders
 
 orders_db = DbOrders()
 
 orders = Blueprint('orders', __name__, url_prefix='/api/v1')
 
+
 @orders.route('/orders', methods=['POST'])
+@swag_from('api_doc/create_order.yml')
 def create_order():
     data = request.get_json()
     try:
@@ -24,6 +26,7 @@ def create_order():
 
 
 @orders.route('/orders/<int:meal_id>', methods=['PUT'])
+@swag_from('api_doc/modify_order.yml')
 def modify_order(meal_id):
     data = request.get_json()
     try:
@@ -49,6 +52,7 @@ def modify_order(meal_id):
 
 
 @orders.route('/orders', methods=['GET'])
+@swag_from("api_doc/get_all_orders.yml")
 def get_all_orders():
     orders_per_caterer = orders_db.get_orders(caterer='default10')
     if orders_per_caterer:
